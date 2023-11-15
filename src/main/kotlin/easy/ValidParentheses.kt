@@ -2,27 +2,25 @@ package easy
 
 import java.util.*
 
-class ValidParentheses {
-    fun isValid(s: String): Boolean {
-        if(s.isEmpty() || s.length == 1) return false
+fun isValid(s: String): Boolean {
+    if (s.isEmpty() || s.length == 1) return false
 
-        val stack = Stack<Char>()
+    val stack = Stack<Char>()
 
-        for (c in s) {
-            when (c) {
-                '(', '{', '[' -> stack.push(c)
-                ')' -> if(stack.isEmpty() || stack.pop() != '(') return false
-                '}' -> if(stack.isEmpty() || stack.pop() != '{') return false
-                ']' -> if(stack.isEmpty() || stack.pop() != '[') return false
-            }
+    for (c in s) {
+        when (c) {
+            '(', '{', '[' -> stack.push(c)
+            ')' -> if (stack.isEmpty() || stack.pop() != '(') return false
+            '}' -> if (stack.isEmpty() || stack.pop() != '{') return false
+            ']' -> if (stack.isEmpty() || stack.pop() != '[') return false
         }
-
-        return stack.isEmpty()
     }
 
+    return stack.isEmpty()
 }
 
+
 fun main() {
-    val solution = ValidParentheses().isValid("(])")
+    val solution = isValid("(])")
     println(solution)
 }
